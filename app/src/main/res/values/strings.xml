@@ -78,6 +78,11 @@
     <string name="line_Leskinen_holy_cow">Holy Cow! So I said we should come soon.</string>
     <string name="line_should_christina">Or should I have introduced myself with, \"It\'s Christina\"?</string>
     <string name="line_ok">OK.</string>
+    <string name="line_i_see">I see.</string>
+    <string name="line_uh_senpai">Uh… Senpai?</string>
+    <string name="line_perverts_go_to_hell">Perverts should just die!</string>
+    <string name="line_whats_so_funny_senpai">What is so funny, Senpai?</string>
+    <string name="line_tm_too_early">It is still too early.</string>
 
     <!-- Input strings -->
     <string name="christina">christina</string>
@@ -111,4 +116,10 @@
     <string name="antimatter">antimatter</string>
     <string name="assistant">assistant</string>
     <string name="open">open</string>
+    <string name="my_name_is">my name is,call me,i\'m called,i am called</string>
+    <string name="pervert">pervert,hentai,strip,naked</string>
+    <string name="search">search,google,look up,find</string>
+    <string name="how_are_you">how are you,how is it going,how are you doing,what are you doing</string>
+    <string name="i_love_you">i love you,i like you,you are cute,you are beautiful,you are pretty,marry me,kiss me</string>
+    <string name="laugh">haha,hahaha,funny,so funny,lol</string>
 </resources>

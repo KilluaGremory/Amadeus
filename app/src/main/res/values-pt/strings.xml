@@ -6,6 +6,25 @@
     <string name="default_lang">pt</string>
     <string name="default_recog_lang">ja-JP</string>
     <string name="google_app_error">Google App wasn\'t detected.</string>
+    <string name="incoming_call">Chamada de Kurisu.</string>
+    <string name="notification_text">A tua waifu tem saudades tuas.</string>
+
+    <!-- Settings -->
+    <string name="pref_app_settings">Definições da aplicação</string>
+    <string name="pref_recog_lang">Idioma de reconhecimento de voz</string>
+    <string name="pref_recog_lang_desc">Selecione o idioma de reconhecimento de voz</string>
+    <string name="pref_lang">Idioma</string>
+    <string name="pref_lang_desc">Selecione o idioma da aplicação (requer reiniciar a aplicação)</string>
+    <string name="pref_subtitles">Mostrar legendas</string>
+    <string name="pref_subtitles_desc">Mostra legendas para as respostas da Amadeus</string>
+    <string name="pref_notification">Mostrar ícone &quot;XP&quot;</string>
+    <string name="pref_notification_desc">Mostrar ícone na barra de notificações (requer reiniciar a aplicação)</string>
+    <string name="pref_alarm_settings">Definições de alarme</string>
+    <string name="pref_alarm_setup">Configurar alarme</string>
+    <string name="pref_alarm_ringtone">Toque do alarme</string>
+    <string name="pref_alarm_ringtone_desc">Selecione o toque para o alarme</string>
+    <string name="pref_alarm_vibrate">Vibrar no alarme</string>
+    <string name="pref_alarm_24hour_format">Formato de 24 horas</string>
 
     <string name="line_hello">Olá.</string>
     <string name="line_dont_call_me_like_that">Não me chames assim!</string>
@@ -56,6 +75,12 @@
     <string name="line_Leskinen_shaman">Onde tão as meninas shaman japonesas, Lintahlo?</string>
     <string name="line_Leskinen_holy_cow">Porra! Eu bem disse que devíamos ter vindo mais cedo.</string>
     <string name="line_should_christina">Ou será que devia ter dito "É a Christina"?</string>
+    <string name="line_ok">OK.</string>
+    <string name="line_i_see">Compreendo.</string>
+    <string name="line_uh_senpai">Uh… Senpai?</string>
+    <string name="line_perverts_go_to_hell">Pervertidos deveriam ir para o inferno!</string>
+    <string name="line_whats_so_funny_senpai">O que tem tanta graça, Senpai?</string>
+    <string name="line_tm_too_early">Ainda é muito cedo.</string>
 
     <!-- Input strings -->
     <string name="christina">christina</string>
@@ -88,5 +113,11 @@
     <string name="robotics_notes">Robotics Notes</string>
     <string name="antimatter">antimatter</string>
     <string name="assistant">assistant</string>
-    <string name="open">open</string>
+    <string name="open">open,abrir</string>
+    <string name="my_name_is">o meu nome é,chama-me,meu nome é,sou o,sou a</string>
+    <string name="pervert">pervertido,pervertida,hentai,despe-te,despida</string>
+    <string name="search">pesquisa,pesquisar,procura,busca,procurar no google</string>
+    <string name="how_are_you">como estás,como vai,tudo bem,o que estás a fazer</string>
+    <string name="i_love_you">eu te amo,amo-te,gosto de ti,és fofa,és linda,casa comigo,beija-me</string>
+    <string name="laugh">haha,hahaha,engraçado,que riso,kkk</string>
 </resources>

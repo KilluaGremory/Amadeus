@@ -78,6 +78,11 @@
     <string name="line_Leskinen_holy_cow">Nom de Dieu ! J\'avais bien dit qu\'il fallait venir tôt.</string>
     <string name="line_should_christina">Ou aurais-je du me présenter ainsi : \"C\'est Christina\" ?</string>
     <string name="line_ok">OK.</string>
+    <string name="line_i_see">Je vois.</string>
+    <string name="line_uh_senpai">Euh… Senpai ?</string>
+    <string name="line_perverts_go_to_hell">Les pervers devraient aller en enfer !</string>
+    <string name="line_whats_so_funny_senpai">Qu\'y a-t-il de si drôle, Senpai ?</string>
+    <string name="line_tm_too_early">C\'est encore trop tôt.</string>
 
     <!-- Input strings -->
     <string name="christina">christina</string>
@@ -111,4 +116,10 @@
     <string name="antimatter">antimatière</string>
     <string name="assistant">assistante</string>
     <string name="open">ouvrir</string>
+    <string name="my_name_is">je m\'appelle,mon nom est,appelle-moi,je suis</string>
+    <string name="pervert">pervers,perverse,hentai,déshabille-toi,nue,nu</string>
+    <string name="search">cherche,recherche,cherche sur google,cherche sur internet,trouve</string>
+    <string name="how_are_you">comment vas-tu,ça va,ca va,comment ça va,tu fais quoi,que fais-tu</string>
+    <string name="i_love_you">je t\'aime,je t aime,tu me plais,tu es mignonne,tu es belle,embrasse-moi,épouse-moi</string>
+    <string name="laugh">haha,hahaha,drôle,trop drôle,mdr</string>
 </resources>

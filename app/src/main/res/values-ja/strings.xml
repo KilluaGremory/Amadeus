@@ -6,6 +6,25 @@
     <string name="default_lang">ja</string>
     <string name="default_recog_lang">ja-JP</string>
     <string name="google_app_error">Google App wasn\'t detected.</string>
+    <string name="incoming_call">紅莉栖からの着信</string>
+    <string name="notification_text">あなたの嫁が待っています。</string>
+
+    <!-- Settings -->
+    <string name="pref_app_settings">アプリケーション設定</string>
+    <string name="pref_recog_lang">音声認識言語</string>
+    <string name="pref_recog_lang_desc">音声認識の言語を選択</string>
+    <string name="pref_lang">言語</string>
+    <string name="pref_lang_desc">アプリの言語を選択（アプリの再起動が必要）</string>
+    <string name="pref_subtitles">字幕を表示</string>
+    <string name="pref_subtitles_desc">アマデウスの応答に字幕を表示する</string>
+    <string name="pref_notification">&quot;XP&quot;アイコンを表示</string>
+    <string name="pref_notification_desc">通知バーにアイコンを表示（アプリの再起動が必要）</string>
+    <string name="pref_alarm_settings">アラーム設定</string>
+    <string name="pref_alarm_setup">アラーム設定</string>
+    <string name="pref_alarm_ringtone">アラーム音</string>
+    <string name="pref_alarm_ringtone_desc">アラームの着信音を選択</string>
+    <string name="pref_alarm_vibrate">アラーム時に振動</string>
+    <string name="pref_alarm_24hour_format">24時間表示</string>
 
     <string name="line_hello">Hello.</string>
     <string name="line_dont_call_me_like_that">Don\'t call me like that!</string>
@@ -56,6 +75,12 @@
     <string name="line_Leskinen_shaman">Where are the Japanese shaman girls, Lintahlo?</string>
     <string name="line_Leskinen_holy_cow">Holy Cow! So I said we should come soon.</string>
     <string name="line_should_christina">Or should I have introduced myself with, \"It\'s Christina\"?</string>
+    <string name="line_ok">OK.</string>
+    <string name="line_i_see">なるほど。</string>
+    <string name="line_uh_senpai">う…先輩？</string>
+    <string name="line_perverts_go_to_hell">変態は死ねばいいのに！</string>
+    <string name="line_whats_so_funny_senpai">何がそんなにおかしいの、先輩？</string>
+    <string name="line_tm_too_early">まだ早すぎるわ。</string>
 
     <!-- Input strings -->
     <string name="christina">クリスティーナ</string>
@@ -88,4 +113,11 @@
     <string name="robotics_notes">ロボティクスノーツ</string>
     <string name="antimatter">アンティメタ</string>
     <string name="assistant">助手</string>
+    <string name="open">開いて,起動して</string>
+    <string name="my_name_is">私の名前は,僕の名前は,俺の名前は,名前は,と呼んで</string>
+    <string name="pervert">変態,エッチ,脱いで,裸</string>
+    <string name="search">検索,ググって,調べて,探して</string>
+    <string name="how_are_you">元気,調子はどう,何してるの</string>
+    <string name="i_love_you">愛してる,好き,可愛い,かわいい,結婚して,キスして</string>
+    <string name="laugh">ハハ,笑,草,面白い</string>
 </resources>

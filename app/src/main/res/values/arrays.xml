@@ -33,6 +33,7 @@
         <item>Español</item>
         <item>Deutsch</item>
         <item>Française</item>
+        <item>Italiano</item>
     </string-array>
 
     <string-array name="languagesRecogValues">
@@ -42,6 +43,7 @@
         <item>es-ES</item>
         <item>de-DE</item>
         <item>fr-FR</item>
+        <item>it-IT</item>
     </string-array>
 
     <string-array name="ringtonesArray">

@@ -74,6 +74,12 @@
     <string name="line_Leskinen_holy_cow">О боже! Поэтому я сказал что мы скоро придем.</string>
     <string name="line_should_christina">Или я должна была представиться как, "Кристина"?</string>
     <string name="line_pervert_confirmed">PERVERT CONFIRMED.</string>
+    <string name="line_ok">OK.</string>
+    <string name="line_i_see">Понятно.</string>
+    <string name="line_uh_senpai">Эм… Семпай?</string>
+    <string name="line_perverts_go_to_hell">Извращенцы должны отправиться в ад!</string>
+    <string name="line_whats_so_funny_senpai">Что тут смешного, Семпай?</string>
+    <string name="line_tm_too_early">Еще слишком рано.</string>
 
     <!-- Пока не используются -->
     <string name="line_i_guess">Думаю, да.</string>
@@ -113,4 +119,12 @@
     <string name="atchannel">アットチャンネル</string>
     <string name="oppai">おっぱい</string>
     <string name="hiyajo">比屋定</string>
+    <string name="robotics_notes">Robotics Notes</string>
+    <string name="antimatter">антиматерия</string>
+    <string name="my_name_is">меня зовут,моё имя,мое имя,называй меня,я</string>
+    <string name="pervert">извращенец,хентай,разденься,голая</string>
+    <string name="search">найди,ищи,поиск,найди в гугле,загугли</string>
+    <string name="how_are_you">как дела,как ты,что делаешь,все хорошо</string>
+    <string name="i_love_you">я люблю тебя,ты мне нравишься,ты милая,ты красивая,поцелуй меня,выходи за меня</string>
+    <string name="laugh">хаха,ха-ха,смешно,ору,лол</string>
 </resources>

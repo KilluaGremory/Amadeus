@@ -8,7 +8,7 @@ import android.content.ContextWrapper;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Build;
-import android.preference.PreferenceManager;
+import androidx.preference.PreferenceManager;
 
 import java.util.Locale;
 

@@ -2,18 +2,11 @@
 A side project that aims to replicate the Amadeus App shown in Steins;Gate 0 for Android.
 
 I'm creating this mainly for cosplay purposes, thus the design takes priority over actual functionality.
-Hit me up on the <a href="https://discord.gg/fTtJ2Ws">Steins;Gate Discord</a>.
+Hit me up on the Steins;Gate Discord.
 
 To start speech recognition simply touch her once. If you long-click her, she will go on a loop and say random sentences in random intervals. Long-Click again to stop.
 
-# HOW TO INSTALL
-<ol>
-  <li>Download the <b>amadeus.apk</b> from <a href="https://github.com/Yink/Amadeus/releases">here</a> to your phone (you only need this file).</li>
-<li>Make sure to have <b>installation from unknown sources</b> activated in your phone's security settings (<a href="https://www.wikihow.tech/Install-APK-Files-on-Android">How-to<a>)</li>
-<li>Click on <b>amadeus.apk</b> on your phone to install it</li>
-<li>Choose your preferred settings by clicking on the "Amadeus" logo</li>
-</ol>
-
+To enter Amadeus settings tap on Amadeus logo.
 
 # Screenshots
 <ul>
@@ -43,9 +36,9 @@ Here is a short list of available options:
 <ul>
 <li>Show subtitles - Shows subtitles according to selected app language.</li>
 <li>Show XP-Icon - Show XP-Icon in notification bar (see in-game or app screenshots, app restart required)</li>
-<li>Recognition language - Switches recognition language. Currently available languages: English, Japanese, Russian, German, French</li>
-<li>Application language - Switches application language. Doesn't affect recognition language. Currently available languages: English, Russian, Spanish, Portuguese, Italian, French, German and Chinese (Traditional and Simplified).</li>
-<li>Alarm setup - Opens dialog window with alarm feature. Triggers Amadeus call on alarm.</li>
+<li>Recognition language - Switches recognition language. Currently available languages: English, Japanese, Russian, Spanish, German, French, Italian</li>
+<li>Application language - Switches application language. Doesn't affect recognition language. Currently available languages: English, Russian, Spanish, Portuguese, Italian, French, German, Japanese, Simplified Chinese, Traditional Chinese.</li>
+<li>Alarm setup - Work in progress. Opens dialog window with alarm feature. Triggers Amadeus call on alarm.</li>
 </ul>
 
 # Credits
@@ -59,7 +52,7 @@ Here is a short list of available options:
   <li><a href="https://twitter.com/TehVict">TehVict</a> for the Portuguese (Brazil) translation</li>
   <li><a href="https://twitter.com/gioghurt">Gioghurt</a> for the Spanish translation</li>
   <li><a href="https://twitter.com/DelusionParadox">Ice</a> for a revision of the Spanish translation</li>
-  <li><a href="https://twitter.com/AlternisDim96">Alternis Dim96</a> for the Italian translation</li>
+  <li>Alternis Dim96 for the Italian translation</li>
   <li>Woute and Okami Amaterasu for the French translation</li>
   <li>History-exe for the Chinese (Simplified) translation</li>
   <li>jaidTw and ekrekeler for the Chinese (Traditional) translation</li>

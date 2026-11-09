@@ -46,7 +46,7 @@ class VoiceLine {
     }
 
     static class Line {
-        static VoiceLine[] voiceLines = new VoiceLine[45];
+        static VoiceLine[] voiceLines = new VoiceLine[50];
 
         static final int HELLO = 0;
         static final int DAGA_KOTOWARU = 1;
@@ -93,6 +93,11 @@ class VoiceLine {
         static final int TM_NOT_POSSIBLE = 42;
         static final int PLEASED_TO_MEET = 43;
         static final int PERVERT_IDIOT = 44;
+        static final int I_SEE               = 45; // "i_see.ogg" — usato per conferma nome
+        static final int UH_SENPAI           = 46; // "uh_senpai.ogg" — usato per ritorno rapido
+        static final int PERVERTS_GO_TO_HELL = 47; // "perverts_go_to_hell.ogg"
+        static final int WHATS_SO_FUNNY      = 48; // "whats_so_funny_senpai.ogg"
+        static final int TM_TOO_EARLY        = 49; // "tm_too_early.ogg"
 
         static VoiceLine[] getLines() {
             voiceLines[HELLO] = new VoiceLine(R.raw.hello, Mood.HAPPY, R.string.line_hello);
@@ -140,6 +145,11 @@ class VoiceLine {
             voiceLines[TM_NOT_POSSIBLE] = new VoiceLine(R.raw.tm_not_possible, Mood.DISAPPOINTED, R.string.line_tm_not_possible);
             voiceLines[PLEASED_TO_MEET] = new VoiceLine(R.raw.pleased_to_meet_you, Mood.SIDED_PLEASANT, R.string.line_pleased_to_meet_you);
             voiceLines[PERVERT_IDIOT] = new VoiceLine(R.raw.pervert_idot_wanttodie, Mood.ANGRY, R.string.line_pervert_idiot_wanttodie);
+            voiceLines[I_SEE]               = new VoiceLine(R.raw.i_see,                 Mood.HAPPY,         R.string.line_i_see);
+            voiceLines[UH_SENPAI]           = new VoiceLine(R.raw.uh_senpai,             Mood.SIDED_WORRIED, R.string.line_uh_senpai);
+            voiceLines[PERVERTS_GO_TO_HELL] = new VoiceLine(R.raw.perverts_go_to_hell,   Mood.ANGRY,         R.string.line_perverts_go_to_hell);
+            voiceLines[WHATS_SO_FUNNY]      = new VoiceLine(R.raw.whats_so_funny_senpai, Mood.ANNOYED,       R.string.line_whats_so_funny_senpai);
+            voiceLines[TM_TOO_EARLY]        = new VoiceLine(R.raw.tm_too_early,           Mood.NORMAL,        R.string.line_tm_too_early);
 
             return voiceLines;
         }

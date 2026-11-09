@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Sfondo adaptive icon Amadeus: gradiente verticale da arancio chiaro in alto a oro scuro in basso -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <gradient
+        android:type="linear"
+        android:angle="270"
+        android:startColor="#E5A973"
+        android:centerColor="#D06200"
+        android:endColor="#EED500" />
+</shape>

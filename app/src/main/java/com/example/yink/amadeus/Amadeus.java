@@ -1,5 +1,6 @@
 package com.example.yink.amadeus;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -12,8 +13,10 @@ import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.media.audiofx.Visualizer;
 import android.net.Uri;
-import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
+import android.os.Build;
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,10 +31,11 @@ class Amadeus {
     static Boolean isSpeaking = false;
     static Boolean isLoop = false;
     static MediaPlayer m;
-    private static String TAG = "Amadeus";
+    private static Visualizer currentVisualizer;
+    private static final String TAG = "Amadeus";
     private static int shaman_girls = -1;
-    private static VoiceLine[] voiceLines = VoiceLine.Line.getLines();
-    private static HashMap<Bundle<Integer>, Bundle<VoiceLine>> responseInputMap = new HashMap<>();
+    private static final VoiceLine[] voiceLines = VoiceLine.Line.getLines();
+    private static final HashMap<Bundle<Integer>, Bundle<VoiceLine>> responseInputMap = new HashMap<>();
 
     static {
         responseInputMap.put(new Bundle<>(
@@ -104,11 +108,35 @@ class Amadeus {
                 R.string.hot,
                 R.string.sexy,
                 R.string.boobies,
-                R.string.oppai
+                R.string.oppai,
+                R.string.pervert
         ), new Bundle<>(
                 voiceLines[VoiceLine.Line.DEVILISH_PERVERT],
                 voiceLines[VoiceLine.Line.PERVERT_CONFIRMED],
-                voiceLines[VoiceLine.Line.PERVERT_IDIOT]
+                voiceLines[VoiceLine.Line.PERVERT_IDIOT],
+                voiceLines[VoiceLine.Line.PERVERTS_GO_TO_HELL]
+        ));
+        responseInputMap.put(new Bundle<>(
+                R.string.i_love_you
+        ), new Bundle<>(
+                voiceLines[VoiceLine.Line.HEHEHE],
+                voiceLines[VoiceLine.Line.WHY_SAY_THAT],
+                voiceLines[VoiceLine.Line.STILL_NOT_HAPPY],
+                voiceLines[VoiceLine.Line.DEVILISH_PERVERT]
+        ));
+        responseInputMap.put(new Bundle<>(
+                R.string.how_are_you
+        ), new Bundle<>(
+                voiceLines[VoiceLine.Line.ASK_ME],
+                voiceLines[VoiceLine.Line.I_GUESS],
+                voiceLines[VoiceLine.Line.SOUNDS_TOUGH],
+                voiceLines[VoiceLine.Line.COULD_I_HELP]
+        ));
+        responseInputMap.put(new Bundle<>(
+                R.string.laugh
+        ), new Bundle<>(
+                voiceLines[VoiceLine.Line.WHATS_SO_FUNNY],
+                voiceLines[VoiceLine.Line.HEHEHE]
         ));
         responseInputMap.put(new Bundle<>(
                 R.string.robotics_notes,
@@ -118,28 +146,85 @@ class Amadeus {
         ));
     }
 
+    private static void releaseVisualizer() {
+        if (currentVisualizer != null) {
+            try {
+                currentVisualizer.setEnabled(false);
+                currentVisualizer.release();
+            } catch (Exception ignored) {
+            }
+            currentVisualizer = null;
+        }
+    }
+
     static void speak(VoiceLine line, final Activity activity) {
-        final AnimationDrawable animation;
+        if (activity == null || activity.isFinishing()) return;
+
         final TextView subtitles = (TextView) activity.findViewById(R.id.textView_subtitles);
         final ImageView kurisu = (ImageView) activity.findViewById(R.id.imageView_kurisu);
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(activity);
 
         try {
-            m = MediaPlayer.create(activity, line.getId());
-            final Visualizer v = new Visualizer(m.getAudioSessionId());
+            releaseVisualizer();
 
-            if (settings.getBoolean("show_subtitles", false)) {
+            if (m != null) {
+                try {
+                    if (m.isPlaying()) m.stop();
+                } catch (Exception ignored) {
+                }
+                m.release();
+                m = null;
+            }
+
+            m = MediaPlayer.create(activity, line.getId());
+            if (m == null) return;
+
+            if (settings.getBoolean("show_subtitles", false) && subtitles != null) {
                 subtitles.setText(line.getSubtitle());
             }
 
             Resources res = activity.getResources();
-            animation = (AnimationDrawable) Drawable.createFromXml(res, res.getXml(line.getMood()));
+            final AnimationDrawable animation = (AnimationDrawable) Drawable.createFromXml(res, res.getXml(line.getMood()));
 
-            if (m.isPlaying()) {
-                m.stop();
-                m.release();
-                v.setEnabled(false);
-                m = new MediaPlayer();
+            boolean hasAudioPermission = ContextCompat.checkSelfPermission(
+                    activity, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED;
+
+            if (hasAudioPermission) {
+                try {
+                    currentVisualizer = new Visualizer(m.getAudioSessionId());
+                    currentVisualizer.setEnabled(false);
+                    currentVisualizer.setCaptureSize(Visualizer.getCaptureSizeRange()[1]);
+                    currentVisualizer.setDataCaptureListener(
+                            new Visualizer.OnDataCaptureListener() {
+                                public void onWaveFormDataCapture(Visualizer visualizer, byte[] bytes, int samplingRate) {
+                                    if (bytes == null || bytes.length == 0) return;
+                                    int sum = 0;
+                                    for (int i = 1; i < bytes.length; i++) {
+                                        sum += bytes[i] + 128;
+                                    }
+                                    final float normalized = sum / (float) bytes.length;
+
+                                    activity.runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            if (kurisu != null && animation != null) {
+                                                if (normalized > 50) {
+                                                    kurisu.setImageDrawable(animation.getFrame((int) Math.ceil(Math.random() * 2)));
+                                                } else {
+                                                    kurisu.setImageDrawable(animation.getFrame(0));
+                                                }
+                                            }
+                                        }
+                                    });
+                                }
+
+                                public void onFftDataCapture(Visualizer visualizer, byte[] bytes, int samplingRate) {
+                                }
+                            }, Visualizer.getMaxCaptureRate() / 2, true, false);
+                } catch (Exception e) {
+                    Log.w(TAG, "Visualizer could not be initialized: " + e.getMessage());
+                    releaseVisualizer();
+                }
             }
 
             m.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
@@ -147,7 +232,12 @@ class Amadeus {
                 public void onPrepared(MediaPlayer mp) {
                     isSpeaking = true;
                     mp.start();
-                    v.setEnabled(true);
+                    if (currentVisualizer != null) {
+                        try {
+                            currentVisualizer.setEnabled(true);
+                        } catch (Exception ignored) {
+                        }
+                    }
                 }
             });
 
@@ -155,62 +245,45 @@ class Amadeus {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
                     isSpeaking = false;
-                    mp.release();
-                    v.setEnabled(false);
+                    releaseVisualizer();
+                    try {
+                        mp.release();
+                    } catch (Exception ignored) {
+                    }
+                    if (m == mp) m = null;
 
                     activity.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            kurisu.setImageDrawable(animation.getFrame(0));
+                            if (kurisu != null && animation != null) {
+                                kurisu.setImageDrawable(animation.getFrame(0));
+                            }
                         }
                     });
                 }
             });
 
-
-            v.setEnabled(false);
-            v.setCaptureSize(Visualizer.getCaptureSizeRange()[1]);
-            v.setDataCaptureListener(
-                    new Visualizer.OnDataCaptureListener() {
-                        public void onWaveFormDataCapture(Visualizer visualizer, byte[] bytes, int samplingRate) {
-                            int sum = 0;
-                            for (int i = 1; i < bytes.length; i++) {
-                                sum += bytes[i] + 128;
-                            }
-                            // The normalized volume
-                            final float normalized = sum / (float) bytes.length;
-
-                            activity.runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    if (normalized > 50) {
-                                        // Todo: Maybe choose sprite based on previous choice and volume instead of random
-                                        kurisu.setImageDrawable(animation.getFrame((int) Math.ceil(Math.random() * 2)));
-                                    } else {
-                                        kurisu.setImageDrawable(animation.getFrame(0));
-                                    }
-                                }
-                            });
-                        }
-                        public void onFftDataCapture(Visualizer visualizer, byte[] bytes, int samplingRate) { }
-                    }, Visualizer.getMaxCaptureRate() / 2, true, false);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG, "Error in speak: ", e);
         }
     }
 
     static void responseToInput(String input, Context context, Activity activity) {
+        responseToInput(input, context, activity, null);
+    }
+
+    static void responseToInput(String input, Context context, Activity activity, AmadeusMemory memory) {
         VoiceLine[] specificLines = null;
         input = input.toLowerCase();
 
-        if (containInput(input,context.getString(R.string.nullpo))) {
+        if (containInput(input, context.getString(R.string.nullpo))) {
             shaman_girls++;
-            if(shaman_girls<5){
+            if (shaman_girls < 5) {
                 specificLines = new VoiceLine[]{
                         voiceLines[VoiceLine.Line.GAH],
                         voiceLines[VoiceLine.Line.GAH_EXTENDED]
                 };
-            }else {
+            } else {
                 VoiceLine singleLine;
                 switch (shaman_girls) {
                     case 5:
@@ -237,10 +310,19 @@ class Amadeus {
             for (Bundle<Integer> input_bundle : responseInputMap.keySet()) {
                 for (Integer input_code : input_bundle) {
                     if (containInput(input, context.getString(input_code))) {
-                        specificLines = responseInputMap.get(input_bundle).toArray();
+                        Bundle<VoiceLine> res = responseInputMap.get(input_bundle);
+                        if (res != null) {
+                            specificLines = res.toArray();
+                        }
+                        // Traccia il contatore Christina nella memoria persistente
+                        if (input_code == R.string.christina && memory != null) {
+                            memory.incrementChristinaTotal();
+                            Log.d(TAG, "Christina total: " + memory.getChristinaTotal());
+                        }
                         break;
                     }
                 }
+                if (specificLines != null) break;
             }
 
             if (specificLines == null) {
@@ -255,13 +337,28 @@ class Amadeus {
             }
         }
         int intTarget = 0;
-        if(specificLines.length>1){intTarget = new Random().nextInt(specificLines.length);}
+        if (specificLines.length > 1) {
+            intTarget = new Random().nextInt(specificLines.length);
+        }
         Amadeus.speak(specificLines[intTarget], activity);
     }
 
-    private static boolean containInput(final String input, final String... strings){
-        for(String s:strings){
-            if(input.contains(s)) return true;
+    static boolean containInput(final String input, final String... strings) {
+        if (input == null) return false;
+        String cleanInput = input.toLowerCase().replaceAll("[.,?!¿¡:;]", " ").trim();
+        // Normalizzazione anti-censura automatica per parole censurate da Google Speech Recognition
+        cleanInput = cleanInput.replaceAll("t[\\*]+e?", "tette");
+        cleanInput = cleanInput.replaceAll("f[\\*]+a?", "figa");
+        cleanInput = cleanInput.replaceAll("c[\\*]+o?", "cazzo");
+        for (String s : strings) {
+            if (s == null) continue;
+            String[] variants = s.split("[,;]");
+            for (String variant : variants) {
+                String trimmed = variant.trim().toLowerCase();
+                if (!trimmed.isEmpty() && cleanInput.contains(trimmed)) {
+                    return true;
+                }
+            }
         }
         return false;
     }
@@ -272,23 +369,30 @@ class Amadeus {
 
         HashMap<String, Integer> dictionary = new HashMap<>();
         String corrected;
-        Boolean found;
-        /* TODO: Dictionary for other language equivalents. To be reworked. */
+        boolean found;
+
         dictionary.put("хром", 0);
         dictionary.put("календарь", 1);
         dictionary.put("часы", 2);
         dictionary.put("будильник", 2);
         dictionary.put("камеру", 3);
 
+        // Italian app triggers
+        dictionary.put("chrome", 0);
+        dictionary.put("google", 0);
+        dictionary.put("calendario", 1);
+        dictionary.put("orologio", 2);
+        dictionary.put("sveglia", 2);
+        dictionary.put("fotocamera", 3);
+        dictionary.put("camera", 3);
+
         String[] apps = {
                 "chrome", "calendar", "clock", "camera"
         };
 
         for (ApplicationInfo packageInfo : packages) {
-            /* TODO: Needs to be adjusted probably. */
             found = true;
-            /* Look up words in dictionary and correct the input since we can't open some apps in other langs */
-            for (String word: input) {
+            for (String word : input) {
                 if (dictionary.get(word) != null) {
                     corrected = apps[dictionary.get(word)].toLowerCase();
                 } else {
@@ -301,11 +405,10 @@ class Amadeus {
             }
 
             if (found) {
-                Log.d(TAG, "Found app!");
+                Log.d(TAG, "Found app: " + packageInfo.packageName);
                 Intent app;
                 Amadeus.speak(voiceLines[VoiceLine.Line.OK], activity);
                 switch (packageInfo.packageName) {
-                    /* Exceptional cases */
                     case "com.android.phone": {
                         app = new Intent(Intent.ACTION_DIAL, null);
                         activity.startActivity(app);
@@ -313,14 +416,12 @@ class Amadeus {
                     }
                     case "com.android.chrome": {
                         app = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com"));
-                        /* Default browser might be different */
                         app.setPackage(packageInfo.packageName);
                         activity.startActivity(app);
                         break;
                     }
                     default: {
                         app = activity.getPackageManager().getLaunchIntentForPackage(packageInfo.packageName);
-                        /* Check if intent is not null to avoid crash */
                         if (app != null) {
                             app.addCategory(Intent.CATEGORY_LAUNCHER);
                             activity.startActivity(app);
@@ -328,7 +429,6 @@ class Amadeus {
                         break;
                     }
                 }
-                /* Don't need to search for other ones, so break this loop */
                 break;
             }
         }
@@ -336,8 +436,9 @@ class Amadeus {
 
     private static class Bundle<T> implements Iterable<T> {
 
-        private T[] list;
+        private final T[] list;
 
+        @SafeVarargs
         public Bundle(T... list) {
             this.list = list;
         }
@@ -349,7 +450,7 @@ class Amadeus {
         @NonNull
         @Override
         public Iterator<T> iterator() {
-            Iterator<T> iterator = new Iterator<T>() {
+            return new Iterator<T>() {
                 int index = 0;
 
                 @Override
@@ -362,8 +463,6 @@ class Amadeus {
                     return list[index++];
                 }
             };
-            return iterator;
         }
     }
-
 }

@@ -77,7 +77,12 @@
     <string name="line_Leskinen_shaman">被称为日本特色的巫女在哪？伦太郎。</string>
     <string name="line_Leskinen_holy_cow">天呐，所以我说咱们应该来早点。</string>
     <string name="line_should_christina">还是说，我称呼自己为克莉斯缇娜更好一点？</string>
-    <string name="line_ok">什么？</string>
+    <string name="line_ok">好的。</string>
+    <string name="line_i_see">原来如此。</string>
+    <string name="line_uh_senpai">呃…前辈？</string>
+    <string name="line_perverts_go_to_hell">变态去死就好了！</string>
+    <string name="line_whats_so_funny_senpai">有什么好笑的，前辈？</string>
+    <string name="line_tm_too_early">现在还为时过早。</string>
 
     <!-- Input strings -->
     <string name="christina">christina</string>
@@ -110,5 +115,11 @@
     <string name="robotics_notes">Robotics Notes</string>
     <string name="antimatter">antimatter</string>
     <string name="assistant">assistant</string>
-    <string name="open">open</string>
+    <string name="open">open,打开</string>
+    <string name="my_name_is">我叫,我的名字是,叫我,我是</string>
+    <string name="pervert">变态,色狼,脱掉,脱衣服,裸体</string>
+    <string name="search">搜索,搜一下,百度,谷歌,查找</string>
+    <string name="how_are_you">你好吗,最近怎么样,在干什么,怎么样</string>
+    <string name="i_love_you">我爱你,我喜欢你,你真可爱,你真漂亮,嫁给我,亲我</string>
+    <string name="laugh">哈哈,哈哈哈,好笑,搞笑</string>
 </resources>

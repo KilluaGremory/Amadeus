@@ -28,6 +28,9 @@ local.properties
 .idea/modules.xml
 .idea/scopes/scope_settings.xml
 .idea/vcs.xml
+.idea/jarRepositories.xml
+.idea/.gitignore
+app/.idea/
 *.iml
 
 # OS-specific files

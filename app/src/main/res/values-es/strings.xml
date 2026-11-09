@@ -6,6 +6,8 @@
     <string name="default_lang">es</string>
     <string name="default_recog_lang">es-ES</string>
     <string name="google_app_error">Google App no fue detectado.</string>
+    <string name="incoming_call">Llamada de Kurisu.</string>
+    <string name="notification_text">Tu waifu te extraña.</string>
 
 
     <string name="pref_app_settings">Ajustes de la aplicación</string>
@@ -75,6 +77,11 @@
     <string name="line_Leskinen_holy_cow">Holy Cow! So I said we should come soon.</string>
     <string name="line_should_christina">¿O debería haberme presentado con "se dice Christina"?</string>
     <string name="line_ok">OK.</string>
+    <string name="line_i_see">Ya veo.</string>
+    <string name="line_uh_senpai">Uh… ¿Senpai?</string>
+    <string name="line_perverts_go_to_hell">¡Los pervertidos deberían irse al infierno!</string>
+    <string name="line_whats_so_funny_senpai">¿Qué es tan gracioso, Senpai?</string>
+    <string name="line_tm_too_early">Todavía es muy temprano.</string>
 
     <!-- Input strings -->
     <string name="christina">christina</string>
@@ -106,5 +113,12 @@
     <string name="oppai">oppai</string>
     <string name="robotics_notes">Robotics Notes</string>
     <string name="assistant">asistente</string>
+    <string name="open">abre</string>
     <string name="antimatter">antimatter</string>
+    <string name="my_name_is">me llamo,mi nombre es,llámame,soy</string>
+    <string name="pervert">pervertido,pervertida,hentai,desnúdate,desnuda</string>
+    <string name="search">busca,buscar,busca en google,busca en internet,encuentra</string>
+    <string name="how_are_you">cómo estás,como estas,cómo te va,qué tal,que tal,qué haces,que haces</string>
+    <string name="i_love_you">te amo,te quiero,me gustas,eres linda,eres hermosa,cásate conmigo,bésame</string>
+    <string name="laugh">jaja,jajaja,gracioso,qué risa</string>
 </resources>
